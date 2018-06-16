@@ -10,6 +10,7 @@
 
 using std::vector;
 
+// Custom grader object to recieve UI element signals
 class Grader : public QObject {
 
     Q_OBJECT
@@ -17,6 +18,8 @@ class Grader : public QObject {
 public:
     Grader(){}
     ~Grader(){}
+
+    // Calculate grade based on grading scheme and course
     void calculateGrade(){
         double gradeNum = 0.0;
         if (tab && scheme){
@@ -68,6 +71,7 @@ public:
         grade = QString::fromStdString(std::to_string(gradeNum) + "%");
     }
 
+// Recieve User Inputs
 public slots:
     void updateSchema(bool value){
         if (value)
@@ -161,6 +165,7 @@ public slots:
         emit valueChanged(grade);
     }
 
+// Update Grade
 signals:
     void valueChanged(QString newValue);
 

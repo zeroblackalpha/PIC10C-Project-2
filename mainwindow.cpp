@@ -9,6 +9,8 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     Grader *grade = new Grader();
+
+    // Connect all signals and slots
     QObject::connect(ui->tabWidget, SIGNAL(currentChanged(int)), grade, SLOT(updateTab(int)));
     QObject::connect(ui->SchemaA, SIGNAL(toggled(bool)), grade, SLOT(updateSchema(bool)));
     QObject::connect(ui->SchemaB, SIGNAL(toggled(bool)), grade, SLOT(updateSchema(bool)));
